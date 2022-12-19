@@ -13,6 +13,54 @@
 
 > :warning: Havoc is in an early state of release. Breaking changes may be made to APIs/core structures as the framework matures.
 
+# Go1.18
+```
+curl -LO https://go.dev/dl/go1.18.9.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.18.9.linux-amd64.tar.gz
+rm go1.18.9.linux-amd64.tar.gz
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+source ~/.bashrc
+```
+# 先决条件
+```
+sudo apt install -y git build-essential apt-utils cmake libfontconfig1 libglu1-mesa-dev libgtest-dev libspdlog-dev libboost-all-dev libncurses5-dev libgdbm-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev mesa-common-dev qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libqt5websockets5 libqt5websockets5-dev qtdeclarative5-dev qtbase5-dev libqt5websockets5-dev libspdlog-dev python3-dev libboost-all-dev mingw-w64 nasm
+```
+# 乌班图 20.04 / 22.04
+```
+sudo apt install build-essential
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.10 python3.10-dev
+```
+# 下载浩劫是一个现代且可塑的利用后命令和控制框架
+```
+git clone https://github.com/HavocFramework/Havoc.git
+```
+# 构建客户端
+```
+cd Havoc/Client
+make 
+```
+# 构建团队服务器
+```
+cd Havoc/Teamserver
+go mod download golang.org/x/sys  
+go mod download github.com/ugorji/go
+wget https://musl.cc/x86_64-w64-mingw32-cross.tgz -O /tmp/mingw-musl.tgz 
+tar zxvf /tmp/mingw-musl.tgz -C data
+make
+```
+# 运行团队服务器
+```
+sudo ./teamserver server --profile ./profiles/havoc.yaotl -v --debug
+```
+# 运行客户端
+```
+Havoc/Client/Havoc
+```
+
 ### Quick Start
 
 > Please see the [Wiki](https://github.com/HavocFramework/Havoc/wiki) for complete documentation.
